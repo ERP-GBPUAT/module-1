@@ -1,0 +1,14 @@
+.header {
+  background-color: #ebe8e8;
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 25px;
+}
+.logo img {
+  height: 50px;
+  width: 50px;
+}
+.userImg img {
+  height: 50px;
+  width: 50px;
+}

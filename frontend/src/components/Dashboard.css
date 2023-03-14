@@ -1,0 +1,140 @@
+.dashboard {
+  width: 80%;
+  margin: auto;
+  margin-top: 3rem;
+}
+.dashHeader {
+  display: flex;
+  text-transform: uppercase;
+  font-size: 30px;
+  font-weight: bold;
+  justify-content: space-between;
+  align-items: center;
+}
+.addBtn {
+  cursor: pointer;
+  color: white;
+  font-size: 35px;
+  background-color: #5291f0;
+  padding: 0.2rem 0.8rem;
+  border-radius: 5px;
+}
+.dashBody {
+  margin-top: 1rem;
+}
+.dbH {
+  text-align: left;
+  font-size: 22px;
+  font-weight: bold;
+}
+.dashRouters {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0px 2px 4px rgba(178, 178, 178, 0.5);
+  border-radius: 5px;
+  background-color: #f1f8fb;
+}
+.cat {
+  cursor: pointer;
+  padding: 0.9rem;
+  transition: 0.3s;
+  text-transform: capitalize;
+}
+.link {
+  text-decoration: none;
+  color: black;
+}
+.dashRouters div:hover {
+  background-color: white;
+  box-shadow: 0px 2.5px 4px rgba(0, 0, 0, 0.25);
+}
+.activeL {
+  text-decoration: none;
+  color: black;
+  background-color: white;
+  box-shadow: 0px 2.5px 4px rgba(0, 0, 0, 0.25);
+}
+
+.dashLeaves {
+  margin: 2rem 0rem;
+}
+.leave {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px rgba(178, 178, 178, 0.5);
+}
+.up {
+  font-weight: bold;
+}
+.down {
+  font-size: 15px;
+  color: #fad517;
+  text-align: left;
+  font-weight: 500;
+  margin-top: 5px;
+}
+.leaveStatus {
+  color: #dcba0a;
+  background-color: #fffeda;
+  font-weight: bold;
+  padding: 7px 18px;
+  border-radius: 4px;
+}
+.year {
+  text-align: left;
+  margin-bottom: 5px;
+  font-size: 13px;
+  margin-left: 20px;
+  color: gray;
+}
+.l {
+  margin-top: 20px;
+}
+
+.dashFooter {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+.in {
+  width: 20%;
+  text-align: center;
+  padding: 3rem;
+  background: rgba(217, 217, 217, 0.23);
+  box-shadow: 0px 2px 4px rgba(178, 178, 178, 0.5);
+  border-radius: 12px;
+}
+.leaveH {
+  text-transform: capitalize;
+  font-weight: bold;
+  font-size: 20px;
+}
+.count {
+  margin-top: 1rem;
+  font-size: 30px;
+  font-weight: bold;
+}
+.totalLeaves {
+  border-top: 6px solid rgba(52, 220, 10, 0.8);
+}
+.taken {
+  border-top: 6px solid rgba(220, 10, 10, 0.7);
+}
+.remaining {
+  border-top: 6px solid rgba(220, 186, 10, 0.8);
+}
+.totalLeaves .count {
+  color: rgba(52, 220, 10, 0.8);
+}
+.taken .count {
+  color: rgba(220, 10, 10, 0.7);
+}
+.remaining .count {
+  color: rgba(220, 186, 10, 0.8);
+}
