@@ -1,0 +1,42 @@
+const dummyLeaves = [
+  {
+    type: "casual",
+    status: "pending",
+    date: "29",
+    month: "January",
+    year: "2023",
+    day: "Monday",
+  },
+  {
+    type: "medical",
+    status: "approved",
+    date: "9",
+    month: "February",
+    year: "2023",
+    day: "Wednesday",
+  },
+  {
+    type: "casual",
+    status: "pending",
+    date: "29",
+    month: "January",
+    year: "2023",
+    day: "Monday",
+  },
+  {
+    type: "casual",
+    status: "pending",
+    date: "29",
+    month: "January",
+    year: "2023",
+    day: "Monday",
+  },
+  {
+    type: "casual",
+    status: "pending",
+    date: "29",
+    month: "January",
+    year: "2023",
+    day: "Monday",
+  },
+];

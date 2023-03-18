@@ -1,0 +1,52 @@
+.detailPage {
+  margin: 2rem;
+}
+.ahead {
+  text-align: center;
+  font-weight: bold;
+  font-size: 30px;
+}
+.aform {
+  background: rgba(217, 217, 217, 0.23);
+  box-shadow: 0px 2px 4px rgba(178, 178, 178, 0.5);
+  border-radius: 5px;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  font-size: 23px;
+  font-weight: 500;
+  margin: 4rem 8rem;
+}
+.qus,
+.ans {
+  margin-bottom: 1.3rem;
+  padding: 0.5rem 1.5rem;
+}
+.ans {
+  background-color: #dcf2f4;
+  border-radius: 5px;
+}
+.astatus {
+  margin: 2rem 8rem;
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  font-weight: 500;
+}
+.astatus .ain {
+  width: 20%;
+  text-align: center;
+  padding: 1.5rem;
+  background: rgba(217, 217, 217, 0.23);
+  box-shadow: 0px 2px 4px rgba(178, 178, 178, 0.5);
+  border-top: 6px solid rgba(220, 186, 10, 0.8);
+  border-radius: 12px;
+}
+.ain div {
+  margin: 1rem 0;
+}
+.astat {
+  padding: 0.8rem;
+  border-radius: 4px;
+  border: 2px solid;
+}

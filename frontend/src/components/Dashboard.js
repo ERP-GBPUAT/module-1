@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import uuid from "react-uuid";
 import { Routes, Route } from "react-router-dom";
 import "./Dashboard.css";
+import LeaveCard from "./LeaveCard";
 
 const Dashboard = () => {
   const catArr = [
@@ -13,6 +14,7 @@ const Dashboard = () => {
     "outstation",
     "others",
   ];
+
   return (
     <div className="dashboard">
       <div className="dashHeader">
@@ -41,38 +43,10 @@ const Dashboard = () => {
             </NavLink>
           ))}
         </div>
-        <div className="dashLeaves">
-          <div className="l">
-            <div className="year">January, 2023</div>
-            <div className="leave">
-              <div className="leaveDetails">
-                <div className="up">Monday, 29 Jan</div>
-                <div className="down">Casual</div>
-              </div>
-              <div className="leaveStatus">Pending</div>
-            </div>
-          </div>
-          <div className="l">
-            <div className="year">January, 2023</div>
-            <div className="leave">
-              <div className="leaveDetails">
-                <div className="up">Monday, 29 Jan</div>
-                <div className="down">Casual</div>
-              </div>
-              <div className="leaveStatus">Pending</div>
-            </div>
-          </div>
-          <div className="l">
-            <div className="year">January, 2023</div>
-            <div className="leave">
-              <div className="leaveDetails">
-                <div className="up">Monday, 29 Jan</div>
-                <div className="down">Casual</div>
-              </div>
-              <div className="leaveStatus">Pending</div>
-            </div>
-          </div>
-        </div>
+        <Routes>
+          <Route path="/" element={<LeaveCard />} />
+          <Route path="/:lcategory" element={<LeaveCard />} />
+        </Routes>
       </div>
       <div className="dashFooter">
         <div className="totalLeaves in">
