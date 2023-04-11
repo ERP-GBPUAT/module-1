@@ -1,11 +1,14 @@
 import React from "react";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import uuid from "react-uuid";
 import { Routes, Route } from "react-router-dom";
 import "./Dashboard.css";
 import LeaveCard from "./LeaveCard";
+import Modal from "./Modal";
 
 const Dashboard = () => {
+  const [modal, setModal] = useState(false);
   const catArr = [
     "casual",
     "earned",
@@ -15,54 +18,63 @@ const Dashboard = () => {
     "others",
   ];
 
+  const showModal = () => {
+    setModal(true);
+  };
+
   return (
-    <div className="dashboard">
-      <div className="dashHeader">
-        <div></div>
-        <div>Faculty Dashboard</div>
-        <div className="addBtn">+</div>
-      </div>
-      <div className="dashBody">
-        <div className="dbH">Leaves Applied</div>
-        <div className="dashRouters">
-          <NavLink
-            style={{ width: "100%", textAlign: "center" }}
-            to="/"
-            className={(navdata) => (navdata.isActive ? "activeL" : "link")}
-          >
-            <div className="cat"> All</div>
-          </NavLink>
-          {catArr.map((cat) => (
+    <>
+      {modal && <Modal setModal={setModal} />}
+      <div className="dashboard">
+        <div className="dashHeader">
+          <div></div>
+          <div>Faculty Dashboard</div>
+          <div className="addBtn" onClick={showModal}>
+            +
+          </div>
+        </div>
+        <div className="dashBody">
+          <div className="dbH">Leaves Applied</div>
+          <div className="dashRouters">
             <NavLink
               style={{ width: "100%", textAlign: "center" }}
-              key={uuid()}
-              to={`/${cat}`}
+              to="/"
               className={(navdata) => (navdata.isActive ? "activeL" : "link")}
             >
-              <div className="cat">{cat}</div>
+              <div className="cat"> All</div>
             </NavLink>
-          ))}
+            {catArr.map((cat) => (
+              <NavLink
+                style={{ width: "100%", textAlign: "center" }}
+                key={uuid()}
+                to={`/${cat}`}
+                className={(navdata) => (navdata.isActive ? "activeL" : "link")}
+              >
+                <div className="cat">{cat}</div>
+              </NavLink>
+            ))}
+          </div>
+          <Routes>
+            <Route path="/" element={<LeaveCard />} />
+            <Route path="/:lcategory" element={<LeaveCard />} />
+          </Routes>
         </div>
-        <Routes>
-          <Route path="/" element={<LeaveCard />} />
-          <Route path="/:lcategory" element={<LeaveCard />} />
-        </Routes>
+        <div className="dashFooter">
+          <div className="totalLeaves in">
+            <div className="leaveH">Total Leaves</div>
+            <div className="count">50</div>
+          </div>
+          <div className="taken in">
+            <div className="leaveH">Leaves Taken</div>
+            <div className="count">10</div>
+          </div>
+          <div className="remaining in">
+            <div className="leaveH">Remaining</div>
+            <div className="count">40</div>
+          </div>
+        </div>
       </div>
-      <div className="dashFooter">
-        <div className="totalLeaves in">
-          <div className="leaveH">Total Leaves</div>
-          <div className="count">50</div>
-        </div>
-        <div className="taken in">
-          <div className="leaveH">Leaves Taken</div>
-          <div className="count">10</div>
-        </div>
-        <div className="remaining in">
-          <div className="leaveH">Remaining</div>
-          <div className="count">40</div>
-        </div>
-      </div>
-    </div>
+    </>
   );
 };
 
