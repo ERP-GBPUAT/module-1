@@ -1,9 +1,11 @@
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Modal.css";
 
 const Modal = ({ setModal }) => {
   const [category, setCategory] = useState("");
+  const navigate = useNavigate();
   const closeModalHandler = () => {
     setModal(false);
   };
@@ -13,6 +15,7 @@ const Modal = ({ setModal }) => {
   const setCategoryHandler = () => {
     setModal(false);
     console.log(category);
+    navigate(`/form/${category}`);
   };
 
   return (

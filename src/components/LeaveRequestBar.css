@@ -1,0 +1,22 @@
+.leaveR {
+  width: 80vw;
+  margin: auto;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20px;
+  padding: 20px;
+  color: rgba(52, 220, 10, 0.8);
+  font-weight: bold;
+  border: 3px solid rgba(52, 220, 10, 0.8);
+  border-radius: 5px;
+}
+.check {
+  padding: 10px 20px;
+  background-color: rgba(52, 220, 10, 0.8);
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}

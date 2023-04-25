@@ -17,6 +17,15 @@
   font-weight: 500;
   margin: 4rem 8rem;
 }
+.aformS {
+  background: rgba(217, 217, 217, 0.23);
+  box-shadow: 0px 2px 4px rgba(178, 178, 178, 0.5);
+  border-radius: 5px;
+  padding: 2rem;
+  font-size: 23px;
+  font-weight: 500;
+  margin: 4rem 8rem;
+}
 .qus,
 .ans {
   margin-bottom: 1.3rem;
@@ -24,6 +33,7 @@
 }
 .ans {
   background-color: #dcf2f4;
+  border: none;
   border-radius: 5px;
 }
 .astatus {
@@ -49,4 +59,26 @@
   padding: 0.8rem;
   border-radius: 4px;
   border: 2px solid;
+}
+
+.formS form div {
+  display: flex;
+  justify-content: space-between;
+}
+.formS form div input {
+  width: 15vw;
+}
+.formS form .submitCont {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+.formS form .submitCont .submit {
+  background-color: rgba(24, 68, 226, 0.8);
+  color: white;
+  border: none;
+  padding: 1rem;
+  font-size: 20px;
+  font-weight: 600;
+  border-radius: 4px;
 }
