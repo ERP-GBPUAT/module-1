@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Dashboard from "../components/Dashboard";
 import Header from "../components/Header";
 import UserInfo from "../components/UserInfo";
@@ -6,11 +6,21 @@ import UserInfo from "../components/UserInfo";
 import LeaveRequestsBar from "../components/LeaveRequestsBar";
 
 const HomePage = ({ user }) => {
+  const [user,setUser] = useState({})
   // const currentUser = dummyFaculty[0];
+  const [loading,setLoading] = useState(true);
   // const currentUserType = currentUser.type;
+  useEffect(() => {
+    setLoading(true);
+    setUser(JSON.parse(localStorage.getItem('data')))
+    setLoading(false);
+  }, [])
+  
   console.log(user);
   console.log();
   return (
+    <>
+    {loading?<div>Loading...</div>:
     <>
       <Header />
       <UserInfo currentUser={user} />
@@ -28,6 +38,7 @@ const HomePage = ({ user }) => {
       ) : (
         <LeaveRequestsBar />
       )}
+      </>}
     </>
   );
 };
