@@ -68,6 +68,9 @@
 .formS form div input {
   width: 15vw;
 }
+.formS form div select {
+  width: 15vw;
+}
 .formS form .submitCont {
   margin-top: 2rem;
   display: flex;
@@ -81,4 +84,25 @@
   font-size: 20px;
   font-weight: 600;
   border-radius: 4px;
+}
+
+.accRej {
+  margin: 4rem 8rem;
+  display: flex;
+  justify-content: space-between;
+}
+.accRej div {
+  padding: 10px 25px;
+  font-size: 20px;
+  text-transform: uppercase;
+  color: white;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.accept {
+  background-color: rgba(52, 220, 10, 0.8);
+}
+.reject {
+  background-color: rgba(220, 10, 10, 0.6);
 }

@@ -14,7 +14,7 @@ const Modal = ({ setModal }) => {
   };
   const setCategoryHandler = () => {
     setModal(false);
-    console.log(category);
+    // console.log(category);
     navigate(`/form/${category}`);
   };
 

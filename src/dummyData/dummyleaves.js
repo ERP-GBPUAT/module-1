@@ -1,4 +1,4 @@
-const dummyLeaves = [
+export const dummyLeaves = [
   {
     type: "casual",
     status: "pending",

@@ -1,11 +1,16 @@
 import React from "react";
-import "./DetailPage.css";
 import Header from "../components/Header";
-// import { dummyFaculty } from "../dummyData/dummyfaculty";
+import { useNavigate } from "react-router-dom";
+import "./DetailPage.css";
 
-const DetailPage = ({ user }) => {
-  // const currentUser = dummyFaculty[0];
-  // const currentUserType = currentUser.type;
+const ApplicationDetailPage = () => {
+  const navigate = useNavigate();
+  const acceptApplicationHandler = () => {
+    navigate(-1);
+  };
+  const rejectApplicationHandler = () => {
+    navigate(-1);
+  };
   return (
     <>
       <Header />
@@ -39,34 +44,12 @@ const DetailPage = ({ user }) => {
             <div className="ans">Ans</div>
           </div>
         </div>
-        <div className="astatus">
-          {user.type === "faculty" && (
-            <div className="appr1 ain">
-              <div>Head of the Department</div>
-              <div
-                className="astat"
-                style={{
-                  borderColor: "rgba(52, 220, 10, 0.7)",
-                  color: "rgba(52, 220, 10, 0.7)",
-                }}
-              >
-                Approved
-              </div>
-              <div>On DD/MM/YYYY</div>
-            </div>
-          )}
-          <div className="appr2 ain">
-            <div>Dean</div>
-            <div
-              className="astat"
-              style={{
-                borderColor: "red",
-                color: "red",
-              }}
-            >
-              Pending
-            </div>
-            <div>On DD/MM/YYYY</div>
+        <div className="accRej">
+          <div className="accept" onClick={acceptApplicationHandler}>
+            Accept
+          </div>
+          <div className="reject" onClick={rejectApplicationHandler}>
+            Reject
           </div>
         </div>
       </div>
@@ -74,4 +57,4 @@ const DetailPage = ({ user }) => {
   );
 };
 
-export default DetailPage;
+export default ApplicationDetailPage;
