@@ -9,7 +9,7 @@ import Modal from "./Modal";
 import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
 import { db } from "../firebase";
 
-const Dashboard = ({ user }) => {
+const Dashboard = ({ user, token }) => {
   const [leaves, setLeaves] = useState([]);
   const [modal, setModal] = useState(false);
   const currentUserType = user.type;
@@ -20,8 +20,7 @@ const Dashboard = ({ user }) => {
         {
           method: "GET",
           headers: {
-            token:
-              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiYzU5MjM3NzUtYTYzZS00ZDM5LWFjMjktY2RjYjk2ZTc3MDFhIiwiZW1haWwiOiJ0ZXN0QGdtYWlsLmNvbSIsImlzU3R1ZGVudCI6ZmFsc2UsImlzRmFjdWx0eSI6dHJ1ZSwibmFtZSI6IkFuamFsaSBLdWtyZXRpIiwicGhvbmVObyI6Ijk5MjcyNTMwNTciLCJkb2IiOiIyMDA1LTA3LTIxIiwiYWRkcmVzcyI6InByYWdhdGkgdmloYXIgYmxvY2sgcm9hZCBjaGFtYmEgdGVocmkgZ2FyaHdhbCIsImdlbmRlciI6IkZlbWFsZSIsImNyZWF0ZWRBdCI6IjIwMjMtMDUtMzBUMTg6MTk6NTkuNzYxWiIsInVwZGF0ZWRBdCI6IjIwMjMtMDUtMzBUMTg6MTk6NTkuNzYxWiJ9LCJmYWN1bHR5Ijp7ImlkIjoiVElUUyIsImRlcGFydG1lbnQiOiJJbmZvcm1hdGlvbiB0ZWNobm9sb2d5IiwiZGVzaWduYXRpb24iOiJQcm9mZXNzb3IiLCJxdWFsaWZpY2F0aW9uIjoiUGhkIiwid2FyZGVuT2ZIb3N0ZWwiOm51bGwsImhvZE9mRGVwYXJ0bWVudCI6bnVsbCwiZGVhbk9mQ29sbGVnZSI6bnVsbCwiY3JlYXRlZEF0IjoiMjAyMy0wNS0zMFQxODoyMDowMC4wODlaIiwidXBkYXRlZEF0IjoiMjAyMy0wNS0zMFQxODoyMDowMC4wODlaIiwiVXNlcklkIjoiYzU5MjM3NzUtYTYzZS00ZDM5LWFjMjktY2RjYjk2ZTc3MDFhIn0sImlhdCI6MTY4NTQ3MTg2OX0.zLC568AGEBaT6xw9cgUdGVEDsGhtgxVqzit3mLapBFk",
+            token: token,
           },
         }
       );

@@ -5,7 +5,7 @@ import UserInfo from "../components/UserInfo";
 // import { dummyFaculty } from "../dummyData/dummyfaculty";
 import LeaveRequestsBar from "../components/LeaveRequestsBar";
 
-const HomePage = ({ user }) => {
+const HomePage = ({ user, token }) => {
   // const currentUser = dummyFaculty[0];
   // const currentUserType = currentUser.type;
   console.log(user);
@@ -17,7 +17,7 @@ const HomePage = ({ user }) => {
       {user.faculty.designation.toLowerCase().split(" ").includes("dean") ? (
         <div></div>
       ) : (
-        <Dashboard user={user} />
+        <Dashboard user={user} token={token} />
       )}
       {user.faculty.designation
         .toLowerCase()
@@ -26,7 +26,7 @@ const HomePage = ({ user }) => {
       user.faculty.designation.toLowerCase().split(" ").includes("hod") ? (
         <></>
       ) : (
-        <LeaveRequestsBar />
+        <LeaveRequestsBar token={token} />
       )}
     </>
   );
