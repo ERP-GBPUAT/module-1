@@ -21,16 +21,20 @@ function App() {
   // });
   // setUser(arr[1]);
   useEffect(() => {
-    let Msg = document.getElementById("message");
+    // let Msg = document.getElementById("message");
     const recMsg = (e) => {
-      if (localStorage.getItem("token")) return;
-      console.log(e.origin);
+      e.preventDefault();
+      if (
+        localStorage.getItem("token") &&
+        localStorage.getItem("token") != undefined
+      )
+        return;
       console.log("data", e.data);
+      if (!e.data.token) {
+        return;
+      }
       localStorage.setItem("token", e.data.token);
       localStorage.setItem("data", e.data.user);
-      if (localStorage.getItem("token")) {
-        Msg.innerHTML = "Message recived: " + e.data;
-      }
     };
     window.addEventListener("message", recMsg);
     return () => {
