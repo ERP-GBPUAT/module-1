@@ -57,7 +57,7 @@
 }
 
 .dashLeaves {
-  margin: 2rem 0rem;
+  margin: 4rem 0rem;
 }
 .leave {
   cursor: pointer;
@@ -136,4 +136,12 @@
 }
 .remaining .count {
   color: rgba(220, 186, 10, 0.8);
+}
+.noLeaves {
+  font-size: 25px;
+  font-weight: 600;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: rgb(248, 245, 245);
+  margin: 2rem;
 }

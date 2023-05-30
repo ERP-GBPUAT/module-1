@@ -23,7 +23,6 @@ function App() {
   useEffect(() => {
     let Msg = document.getElementById("message");
     const recMsg = (e) => {
-      console.log(e.data);
       if (localStorage.getItem("token")) return;
       console.log(e.origin);
       console.log("data", e.data);
@@ -64,12 +63,11 @@ function App() {
     },
   };
   const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiYjgyNThhZDAtNTMwYy00MWYzLWJmMjUtOTA1NmJhZDI2YzcwIiwibmFtZSI6IkFuamFsaSBLdWtyZXRpIiwiZW1haWwiOiJhbmphbGlrdWt1MDk4QGdtYWlsLmNvbSIsImlzU3R1ZGVudCI6ZmFsc2UsImlzRmFjdWx0eSI6dHJ1ZSwiZ2VuZGVyIjoiRmVtYWxlIiwiYWRkcmVzcyI6InByYWdhdGkgdmloYXIgYmxvY2sgcm9hZCBjaGFtYmEgdGVocmkgZ2FyaHdhbCIsInBob25lTm8iOiI5OTI3MjUzMDU3IiwiZG9iIjoiMjAwMi0wMi0yMSIsInVwZGF0ZWRBdCI6IjIwMjMtMDUtMzBUMTQ6MDY6MzUuNDU4WiIsImNyZWF0ZWRBdCI6IjIwMjMtMDUtMzBUMTQ6MDY6MzUuNDU4WiJ9LCJmYWN1bHR5Ijp7ImlkIjoiMzQzMiIsImRlcGFydG1lbnQiOiJJbmZvcm1hdGlvbiB0ZWNobm9sb2d5IiwiZGVzaWduYXRpb24iOiJQcm9mZXNzb3IiLCJxdWFsaWZpY2F0aW9uIjoiUGhkIn0sImlhdCI6MTY4NTQ1NTU5N30.WkxfrvUtc96AlVWJNaJ5UxfiIZCS21rcTYYhtZ-1sco";
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiYzU5MjM3NzUtYTYzZS00ZDM5LWFjMjktY2RjYjk2ZTc3MDFhIiwiZW1haWwiOiJ0ZXN0QGdtYWlsLmNvbSIsImlzU3R1ZGVudCI6ZmFsc2UsImlzRmFjdWx0eSI6dHJ1ZSwibmFtZSI6IkFuamFsaSBLdWtyZXRpIiwicGhvbmVObyI6Ijk5MjcyNTMwNTciLCJkb2IiOiIyMDA1LTA3LTIxIiwiYWRkcmVzcyI6InByYWdhdGkgdmloYXIgYmxvY2sgcm9hZCBjaGFtYmEgdGVocmkgZ2FyaHdhbCIsImdlbmRlciI6IkZlbWFsZSIsImNyZWF0ZWRBdCI6IjIwMjMtMDUtMzBUMTg6MTk6NTkuNzYxWiIsInVwZGF0ZWRBdCI6IjIwMjMtMDUtMzBUMTg6MTk6NTkuNzYxWiJ9LCJmYWN1bHR5Ijp7ImlkIjoiVElUUyIsImRlcGFydG1lbnQiOiJJbmZvcm1hdGlvbiB0ZWNobm9sb2d5IiwiZGVzaWduYXRpb24iOiJQcm9mZXNzb3IiLCJxdWFsaWZpY2F0aW9uIjoiUGhkIiwid2FyZGVuT2ZIb3N0ZWwiOm51bGwsImhvZE9mRGVwYXJ0bWVudCI6bnVsbCwiZGVhbk9mQ29sbGVnZSI6bnVsbCwiY3JlYXRlZEF0IjoiMjAyMy0wNS0zMFQxODoyMDowMC4wODlaIiwidXBkYXRlZEF0IjoiMjAyMy0wNS0zMFQxODoyMDowMC4wODlaIiwiVXNlcklkIjoiYzU5MjM3NzUtYTYzZS00ZDM5LWFjMjktY2RjYjk2ZTc3MDFhIn0sImlhdCI6MTY4NTQ3MTg2OX0.zLC568AGEBaT6xw9cgUdGVEDsGhtgxVqzit3mLapBFk";
   // setUser(data);
   // }
   // getData();
   // }, []);
-  // console.log(user);
 
   return (
     <div className="App">
