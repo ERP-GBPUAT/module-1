@@ -29,31 +29,32 @@ const LeaveCard = ({ leaves }) => {
     if (leaveT === undefined) temp = leaves;
     else {
       temp = leaves.filter(function (l) {
-        return l.leaveType.split(" ")[0].toLowerCase() === leaveT.split(" ")[0];
+        return l.type.split(" ")[0].toLowerCase() === leaveT.split(" ")[0];
       });
     }
     setCurrLeave(temp);
   }, [leaveT, leaves]);
   // console.log(leaveT);
-  const id = 23;
+  // const id = 23;
   return (
     <div className="dashLeaves">
       {currLeave.length === 0 ? (
-        <div>No Leaves taken under this category</div>
+        <span className="noLeaves">No Leaves taken under this category</span>
       ) : (
         currLeave.map((leave) => (
           <Link
+            leave={leave}
             key={uuidv4()}
-            to={`/detailPage/${id}`}
+            to={`/detailPage/${leave.id}`}
             style={{ textDecoration: "none", color: "inherit" }}
           >
             <div className="l">
               <div className="year">
-                {leave.createdAt.toDate().toDateString()}
+                {new Date(leave.createdAt).toLocaleString()}
               </div>
               <div className="leave">
                 <div className="leaveDetails">
-                  <div className="up">{leave.leavefrom}</div>
+                  <div className="up">{leave.startDate}</div>
                   <div
                     className="down"
                     style={{
@@ -62,7 +63,7 @@ const LeaveCard = ({ leaves }) => {
                       fontSize: "20px",
                     }}
                   >
-                    {leave.leaveType.split(" ")[0]}
+                    {leave.type.split(" ")[0]}
                   </div>
                 </div>
                 {helper
