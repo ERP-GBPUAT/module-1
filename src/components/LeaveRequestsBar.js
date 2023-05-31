@@ -2,28 +2,44 @@ import React, { useEffect, useState } from "react";
 import "./LeaveRequestBar.css";
 import { useNavigate } from "react-router-dom";
 
-const LeaveRequestsBar = ({ token }) => {
+const LeaveRequestsBar = ({ user, token, isDean }) => {
   const [deptLeaves, setDeptLeaves] = useState([]);
-  const leavesRequests = 3;
   const navigate = useNavigate();
+  console.log(isDean.length);
   useEffect(() => {
     async function getLeaves() {
-      const res = await fetch(
-        "http://localhost:8080/facultyLeave/getLeavesByDept",
-        {
-          method: "GET",
-          headers: {
-            token: token,
-          },
-        }
-      );
-      const data = await res.json();
-      console.log(data);
-      setDeptLeaves(data.data);
+      if (isDean.length > 0) {
+        const res = await fetch(
+          "http://localhost:8080/facultyLeave/getAllLeaves",
+          {
+            method: "GET",
+            headers: {
+              token: token,
+            },
+          }
+        );
+        const data = await res.json();
+        console.log(data);
+        setDeptLeaves(data.data);
+      } else {
+        const res = await fetch(
+          "http://localhost:8080/facultyLeave/getLeavesByDept",
+          {
+            method: "GET",
+            headers: {
+              token: token,
+            },
+          }
+        );
+        const data = await res.json();
+        console.log(data);
+        setDeptLeaves(data.data);
+      }
     }
     getLeaves();
-  }, [token]);
+  }, [token, isDean]);
   console.log(deptLeaves);
+  const leavesRequests = deptLeaves.length;
 
   const showReqHandler = () => {
     navigate("/leaveRequests");

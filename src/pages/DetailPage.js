@@ -27,7 +27,7 @@ const DetailPage = ({ user, token }) => {
       setLeave(data.data);
     }
     getLeaves();
-  }, [user, id]);
+  }, [user, id, token]);
   console.log(leave);
   return (
     <>
@@ -43,9 +43,6 @@ const DetailPage = ({ user, token }) => {
               <div className="qus">Leave From</div>
               <div className="qus">Leave Till</div>
               <div className="qus">Application</div>
-              {/* <div className="qus">C.L for</div>
-          <div className="qus">Number of C.L due</div>
-          <div className="qus">Balance C.L</div> */}
             </div>
             <div className="fright">
               <div className="ans">{user.user.name}</div>
@@ -54,9 +51,6 @@ const DetailPage = ({ user, token }) => {
               <div className="ans">{leave.startDate}</div>
               <div className="ans">{leave.endDate}</div>
               <div className="ans">{leave.endDate}</div>
-              {/* <div className="ans">Ans</div>
-          <div className="ans">Ans</div>
-          <div className="ans">Ans</div> */}
             </div>
           </div>
         ) : (
@@ -64,28 +58,26 @@ const DetailPage = ({ user, token }) => {
             <div className="fleft">
               <div className="qus">Name</div>
               <div className="qus">Designation</div>
+              <div className="qus">Leave Type</div>
               <div className="qus">Reason for Leave</div>
               <div className="qus">Outstation permission if required</div>
               <div className="qus">Address during leave period</div>
               <div className="qus">Work Arrangement</div>
               <div className="qus">Leave From</div>
               <div className="qus">Leave Till</div>
-              {/* <div className="qus">C.L for</div>
-            <div className="qus">Number of C.L due</div>
-            <div className="qus">Balance C.L</div> */}
             </div>
             <div className="fright">
               <div className="ans">{user.user.name}</div>
               <div className="ans">{user.faculty.designation}</div>
+              <div className="ans">{leave.type}</div>
               <div className="ans">{leave.reason}</div>
-              <div className="ans">{leave.outstationpermission}</div>
+              <div className="ans">
+                {leave.outstationPermission ? "Yes" : "No"}
+              </div>
               <div className="ans">{leave.addrDuringLeave}</div>
               <div className="ans">{leave.workArrangement}</div>
               <div className="ans">{leave.startDate}</div>
               <div className="ans">{leave.endDate}</div>
-              {/* <div className="ans">Ans</div>
-            <div className="ans">Ans</div>
-            <div className="ans">Ans</div> */}
             </div>
           </div>
         )}

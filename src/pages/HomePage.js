@@ -5,47 +5,46 @@ import UserInfo from "../components/UserInfo";
 // import { dummyFaculty } from "../dummyData/dummyfaculty";
 import LeaveRequestsBar from "../components/LeaveRequestsBar";
 
-const HomePage = ({ user }) => {
-  const [user, setUser] = useState({});
-  // const currentUser = dummyFaculty[0];
-  const [loading, setLoading] = useState(true);
-  // const currentUserType = currentUser.type;
-  useEffect(() => {
-    setLoading(true);
-    setUser(JSON.parse(localStorage.getItem("data")));
-    setLoading(false);
-  }, []);
+const HomePage = ({ user, token }) => {
+  // const [u, setU] = useState({});
+  // const [loading, setLoading] = useState(true);
 
-  console.log(user);
-  console.log();
+  // useEffect(() => {
+  //   setLoading(true);
+  //   setU(JSON.parse(localStorage.getItem("data")));
+  //   setLoading(false);
+  // }, []);
+
+  console.log(user.faculty.deanOfCollege);
   return (
+    // <>
+    //   {loading ? (
+    //     <div>Loading...</div>
+    //   ) : (
     <>
-      {loading ? (
-        <div>Loading...</div>
+      <Header />
+      <UserInfo currentUser={user} isDean={user.faculty.deanOfCollege} />
+      {user.faculty.deanOfCollege.length > 0 ? (
+        <div></div>
       ) : (
-        <>
-          <Header />
-          <UserInfo currentUser={user} />
-          {user.faculty.designation
-            .toLowerCase()
-            .split(" ")
-            .includes("dean") ? (
-            <div></div>
-          ) : (
-            <Dashboard user={user} token={token} />
-          )}
-          {user.faculty.designation
-            .toLowerCase()
-            .split(" ")
-            .includes("professor") ||
-          user.faculty.designation.toLowerCase().split(" ").includes("hod") ? (
-            <></>
-          ) : (
-            <LeaveRequestsBar token={token} />
-          )}
-        </>
+        <Dashboard user={user} token={token} />
+      )}
+      {user.faculty.designation
+        .toLowerCase()
+        .split(" ")
+        .includes("professor") ||
+      user.faculty.designation.toLowerCase().split(" ").includes("hod") ? (
+        <></>
+      ) : (
+        <LeaveRequestsBar
+          user={user}
+          token={token}
+          isDean={user.faculty.deanOfCollege}
+        />
       )}
     </>
+    // )}
+    // </>
   );
 };
 

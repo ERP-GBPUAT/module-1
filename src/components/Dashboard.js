@@ -89,11 +89,11 @@ const Dashboard = ({ user, token }) => {
           </div>
           <div className="taken in">
             <div className="leaveH">Leaves Taken</div>
-            <div className="count">10</div>
+            <div className="count">{leaves.length}</div>
           </div>
           <div className="remaining in">
             <div className="leaveH">Remaining</div>
-            <div className="count">40</div>
+            <div className="count">{50 - leaves.length}</div>
           </div>
         </div>
       </div>
