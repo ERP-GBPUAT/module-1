@@ -4,8 +4,6 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import "../pages/DetailPage.css";
 import Header from "./Header";
-import { collection, doc, serverTimestamp, setDoc } from "firebase/firestore";
-import { db } from "../firebase";
 import { v4 as uuidv4 } from "uuid";
 
 const FormPage = ({ user, token }) => {

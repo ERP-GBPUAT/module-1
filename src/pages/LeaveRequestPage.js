@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 import Header from "../components/Header";
 import UserInfo from "../components/UserInfo";
 import { useNavigate } from "react-router-dom";
@@ -20,7 +21,9 @@ const LeaveRequestPage = ({ user, token, isDean }) => {
         );
         const data = await res.json();
         console.log(data);
-        setDeptLeaves(data.data);
+        setDeptLeaves(
+          data.data.filter((d) => d.status === 0 || d.status === 1)
+        );
       } else {
         const res = await fetch(
           "http://localhost:8080/facultyLeave/getLeavesByDept",
@@ -33,7 +36,7 @@ const LeaveRequestPage = ({ user, token, isDean }) => {
         );
         const data = await res.json();
         console.log(data);
-        setDeptLeaves(data.data);
+        setDeptLeaves(data.data.filter((d) => d.status === 0));
       }
     }
     getLeaves();
@@ -56,7 +59,7 @@ const LeaveRequestPage = ({ user, token, isDean }) => {
           <span className="noLeaves">No Leaves Requests</span>
         ) : (
           deptLeaves.map((leave) => (
-            <div className="l">
+            <div key={uuidv4()} className="l">
               <div className="year">
                 {new Date(leave.createdAt).toLocaleString()}
               </div>

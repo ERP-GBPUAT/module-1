@@ -1,14 +1,12 @@
 import React, { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "./DetailPage.css";
 import Header from "../components/Header";
-// import { dummyFaculty } from "../dummyData/dummyfaculty";
 
 const DetailPage = ({ user, token }) => {
   const [leave, setLeave] = useState({});
-  // const currentUser = dummyFaculty[0];
-  // const currentUserType = currentUser.type;
   const params = useParams();
   const id = params.id;
   console.log(id);
@@ -88,30 +86,72 @@ const DetailPage = ({ user, token }) => {
             .includes("professor") && (
             <div className="appr1 ain">
               <div>Head of the Department</div>
-              <div
-                className="astat"
-                style={{
-                  borderColor: "rgba(52, 220, 10, 0.7)",
-                  color: "rgba(52, 220, 10, 0.7)",
-                }}
-              >
-                Approved
-              </div>
-              <div>On DD/MM/YYYY</div>
+              {leave.status === 1 || leave.status === 2 ? (
+                <div
+                  style={{
+                    color: "#34DC0A",
+                    fontSize: "22px",
+                    fontWeight: "600",
+                  }}
+                >
+                  Approved
+                </div>
+              ) : leave.status < 0 ? (
+                <div
+                  style={{
+                    color: "#DC0A0A",
+                    fontSize: "22px",
+                    fontWeight: "600",
+                  }}
+                >
+                  Rejected
+                </div>
+              ) : (
+                <div
+                  style={{
+                    color: "#fad517",
+                    fontSize: "22px",
+                    fontWeight: "600",
+                  }}
+                >
+                  Pending
+                </div>
+              )}
             </div>
           )}
           <div className="appr2 ain">
             <div>Dean</div>
-            <div
-              className="astat"
-              style={{
-                borderColor: "red",
-                color: "red",
-              }}
-            >
-              Pending
-            </div>
-            <div>On DD/MM/YYYY</div>
+            {leave.status === 2 ? (
+              <div
+                style={{
+                  color: "#34DC0A",
+                  fontSize: "22px",
+                  fontWeight: "600",
+                }}
+              >
+                Approved
+              </div>
+            ) : leave.status < 0 ? (
+              <div
+                style={{
+                  color: "#DC0A0A",
+                  fontSize: "22px",
+                  fontWeight: "600",
+                }}
+              >
+                Rejected
+              </div>
+            ) : (
+              <div
+                style={{
+                  color: "#fad517",
+                  fontSize: "22px",
+                  fontWeight: "600",
+                }}
+              >
+                Pending
+              </div>
+            )}
           </div>
         </div>
       </div>

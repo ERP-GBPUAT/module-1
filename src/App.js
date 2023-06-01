@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState, useEffect, useLayoutEffect } from "react";
+import { useState, useEffect } from "react";
 import HomePage from "./pages/HomePage";
 import { Routes, Route } from "react-router-dom";
 import DetailPage from "./pages/DetailPage";
@@ -10,7 +10,10 @@ import ApplicationDetailPage from "./pages/ApplicationDetailPage";
 function App() {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("data")));
   const [token, setToken] = useState(localStorage.getItem("token"));
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
+    setLoading(true);
     const recMsg = (e) => {
       e.preventDefault();
       // if (
@@ -23,21 +26,21 @@ function App() {
         return;
       }
       localStorage.setItem("token", e.data.token);
-      // setUser(JSON.parse(localStorage.getItem("data")));
+      setToken(localStorage.getItem("token"));
       localStorage.setItem("data", e.data.user);
-      // setToken(localStorage.getItem("token"));
+      setUser(JSON.parse(localStorage.getItem("data")));
     };
     window.addEventListener("message", recMsg);
+    setLoading(false);
     return () => {
       window.removeEventListener("message", recMsg);
     };
   }, []);
-  // setUser(JSON.parse(localStorage.getItem("data")));
-  // setUser(localStorage.getItem("token"));
+  console.log(user);
 
   return (
     <div className="App">
-      {!user && !token ? (
+      {loading || (!user && !token) ? (
         <div>Loading</div>
       ) : (
         <Routes>

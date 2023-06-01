@@ -6,9 +6,6 @@ import { Routes, Route } from "react-router-dom";
 import "./Dashboard.css";
 import LeaveCard from "./LeaveCard";
 import Modal from "./Modal";
-import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
-import { db } from "../firebase";
-
 const Dashboard = ({ user, token }) => {
   const [leaves, setLeaves] = useState([]);
   const [modal, setModal] = useState(false);

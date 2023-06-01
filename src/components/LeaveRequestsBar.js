@@ -20,7 +20,9 @@ const LeaveRequestsBar = ({ user, token, isDean }) => {
         );
         const data = await res.json();
         console.log(data);
-        setDeptLeaves(data.data);
+        setDeptLeaves(
+          data.data.filter((d) => d.status === 0 || d.status === 1)
+        );
       } else {
         const res = await fetch(
           "http://localhost:8080/facultyLeave/getLeavesByDept",
@@ -33,7 +35,7 @@ const LeaveRequestsBar = ({ user, token, isDean }) => {
         );
         const data = await res.json();
         console.log(data);
-        setDeptLeaves(data.data);
+        setDeptLeaves(data.data.filter((d) => d.status === 0));
       }
     }
     getLeaves();

@@ -21,6 +21,12 @@ const LeaveCard = ({ leaves }) => {
       backgroundColor: "#FDDBDB",
       tag: "Rejected",
     },
+    {
+      status: -2,
+      color: "#DC0A0A",
+      backgroundColor: "#FDDBDB",
+      tag: "Rejected",
+    },
   ];
   const params = useParams();
   const leaveT = params.lcategory;
@@ -34,7 +40,7 @@ const LeaveCard = ({ leaves }) => {
     }
     setCurrLeave(temp);
   }, [leaveT, leaves]);
-  // console.log(leaveT);
+  console.log(currLeave);
   // const id = 23;
   return (
     <div className="dashLeaves">
@@ -85,51 +91,6 @@ const LeaveCard = ({ leaves }) => {
           </Link>
         ))
       )}
-
-      {/* <Link
-        to={`/detailPage/${id}`}
-        style={{ textDecoration: "none", color: "inherit" }}
-      >
-        <div className="l">
-          <div className="year">January, 2023</div>
-          <div className="leave">
-            <div className="leaveDetails">
-              <div className="up">Wednesday, 09 Feb</div>
-              <div className="down" style={{ color: "#FD3D49" }}>
-                Medical
-              </div>
-            </div>
-            <div
-              className="leaveS"
-              style={{ color: "#34DC0A", backgroundColor: "#EAF4EB" }}
-            >
-              Approved
-            </div>
-          </div>
-        </div>
-      </Link> */}
-      {/* <Link
-        to={`/detailPage/${id}`}
-        style={{ textDecoration: "none", color: "inherit" }}
-      >
-        <div className="l">
-          <div className="year">January, 2023</div>
-          <div className="leave">
-            <div className="leaveDetails">
-              <div className="up">Monday, 29 Jan</div>
-              <div className="down" style={{ color: "#08903F" }}>
-                Earned
-              </div>
-            </div>
-            <div
-              className="leaveS"
-              style={{ color: "#DC0A0A", backgroundColor: "#FDDBDB" }}
-            >
-              Declined
-            </div>
-          </div>
-        </div>
-      </Link> */}
     </div>
   );
 };
