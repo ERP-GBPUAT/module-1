@@ -1,15 +1,18 @@
 import React, { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { getDownloadURL } from "firebase/storage";
 import "./DetailPage.css";
 import Header from "../components/Header";
+import { ref } from "firebase/storage";
+import { storage } from "../firebase";
 
 const DetailPage = ({ user, token }) => {
   const [leave, setLeave] = useState({});
+  const [imgLink, setImgLink] = useState(null);
   const params = useParams();
   const id = params.id;
-  console.log(id);
+  // console.log(id);
   useEffect(() => {
     async function getLeaves() {
       const res = await fetch(
@@ -23,6 +26,12 @@ const DetailPage = ({ user, token }) => {
       );
       const data = await res.json();
       setLeave(data.data);
+      if (data.data.type === "Others") {
+        const imgRef = ref(storage, `images/${user.user.id}${data.data.id}`);
+        const url = await getDownloadURL(imgRef);
+        setImgLink(url);
+        console.log(url);
+      }
     }
     getLeaves();
   }, [user, id, token]);
@@ -48,7 +57,13 @@ const DetailPage = ({ user, token }) => {
               <div className="ans">{leave.reason}</div>
               <div className="ans">{leave.startDate}</div>
               <div className="ans">{leave.endDate}</div>
-              <div className="ans">{leave.endDate}</div>
+              <div className="ans">
+                {!imgLink ? (
+                  <div>Loading</div>
+                ) : (
+                  <img src={imgLink} style={{ width: "50vw" }} alt="app" />
+                )}
+              </div>
             </div>
           </div>
         ) : (

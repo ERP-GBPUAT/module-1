@@ -1,36 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import "../pages/DetailPage.css";
 import Header from "./Header";
 import { v4 as uuidv4 } from "uuid";
+import { ref, uploadBytes } from "firebase/storage";
+import { storage } from "../firebase";
 
 const FormPage = ({ user, token }) => {
+  const [img, setImg] = useState(null);
+  const [imgRef, setImgRef] = useState(null);
   const params = useParams();
   const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
   const leaveType = params.formCategory;
-  console.log(leaveType);
+  console.log(user);
+
+  const uploadImage = (id) => {
+    // const id = uuidv4();
+    if (img == null) return;
+    const imgRef = ref(storage, `images/${user.user.id}${id}`);
+    setImgRef(imgRef);
+    uploadBytes(imgRef, img).then(() => {
+      console.log("Uploaded");
+    });
+  };
+
   const onSubmit = async (data) => {
     console.log(data);
-    const id = uuidv4();
     const finalData = {
       ...data,
       type: leaveType,
     };
-    console.log(finalData);
     try {
       const res = await fetch("http://localhost:8080/facultyLeave/apply", {
         method: "POST",
-        body: JSON.stringify({ ...finalData, file: finalData.fileDocument }),
+        body: JSON.stringify(finalData),
         headers: {
           "Content-Type": "application/json",
           token: token,
         },
       });
+
       const data = await res.json();
       console.log(data);
+      img && uploadImage(data.data.id);
     } catch (e) {
       console.log(e);
     }
@@ -45,26 +60,6 @@ const FormPage = ({ user, token }) => {
           <div className="aformS">
             <div className="formS">
               <form onSubmit={handleSubmit(onSubmit)}>
-                {/* <div>
-                  <label>Name</label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={user.user.name}
-                    className="ans"
-                    {...register("name", { required: true })}
-                  />
-                </div>
-                <div>
-                  <label>Designation</label>
-                  <input
-                    type="text"
-                    name="designation"
-                    value={user.faculty.designation}
-                    className="ans"
-                    {...register("designation", { required: true })}
-                  />
-                </div> */}
                 <div>
                   <label>Reason for Leave</label>
                   <input
@@ -99,6 +94,9 @@ const FormPage = ({ user, token }) => {
                     name="fileDocument"
                     className="ans"
                     {...register("fileDocument", { required: true })}
+                    onChange={(event) => {
+                      setImg(event.target.files[0]);
+                    }}
                   />
                 </div>
                 <div>

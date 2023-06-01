@@ -40,7 +40,7 @@ const LeaveCard = ({ leaves }) => {
     }
     setCurrLeave(temp);
   }, [leaveT, leaves]);
-  console.log(currLeave);
+  // console.log(currLeave);
   // const id = 23;
   return (
     <div className="dashLeaves">

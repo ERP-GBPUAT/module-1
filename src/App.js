@@ -16,12 +16,7 @@ function App() {
     setLoading(true);
     const recMsg = (e) => {
       e.preventDefault();
-      // if (
-      //   localStorage.getItem("token") &&
-      //   localStorage.getItem("token") !== undefined
-      // )
-      //   return;
-      console.log("data", e.data);
+      // console.log("data", e.data);
       if (!e.data.token) {
         return;
       }
